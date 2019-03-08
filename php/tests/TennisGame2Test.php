@@ -1,5 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
+namespace Kata\Tests;
+
+use Kata\TennisGame2;
+
 /**
  * TennisGame1 test case.
  */
@@ -32,15 +38,14 @@ class TennisGame2Test extends TestMaster
     public function testScores($score1, $score2, $expectedResult)
     {
         $highestScore = max($score1, $score2);
-        for ($i = 0; $i < $highestScore; $i++) {
+        for ($i = 0; $i < $highestScore; ++$i) {
             if ($i < $score1) {
-                $this->_game->wonPoint("player1");
+                $this->_game->wonPoint('player1');
             }
             if ($i < $score2) {
-                $this->_game->wonPoint("player2");
+                $this->_game->wonPoint('player2');
             }
         }
         $this->assertEquals($expectedResult, $this->_game->getScore());
     }
 }
-
